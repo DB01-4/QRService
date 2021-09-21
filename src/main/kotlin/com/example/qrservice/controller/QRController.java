@@ -28,5 +28,10 @@ public class QRController {
         return service.getQRById(id);
     }
 
+    @PutMapping("/update/{id}")
+    public void updateUser(@PathVariable int id) {
+        service.UpdateQR(id);
+    }
+
 
 }
