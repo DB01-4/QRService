@@ -33,5 +33,11 @@ public class QRController {
         service.UpdateQR(id);
     }
 
+    @GetMapping("/check/{tableKey}")
+    public Boolean CheckTableKey(@PathVariable String tableKey) { return service.CheckIfTableKeyExists(tableKey); }
+
+    @GetMapping("/gettable/{tableKey}")
+    public int ReturnTableFromKey(@PathVariable String tableKey){ return service.ReturnTableFromKey(tableKey);}
+
 
 }

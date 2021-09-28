@@ -5,6 +5,9 @@ import com.example.qrservice.repository.QRRepository;
 import com.example.qrservice.entity.QRCode;
 import com.example.qrservice.repository.QRRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.repository.query.parser.Part;
 import org.springframework.stereotype.Service;
 import com.example.qrservice.service.RandomString;
 
@@ -33,6 +36,28 @@ public class QRService {
         existingCode.link = rand.GenerateNewKey();
 
         return repository.save(existingCode);
+    }
+
+
+
+
+    public Boolean CheckIfTableKeyExists(String tableKey){
+        ExampleMatcher linkMatcher = ExampleMatcher.matching()
+                .withIgnoreNullValues()
+                .withIgnorePaths("id");
+
+        QRCode qr = new QRCode();
+        qr.link = tableKey;
+        Example<QRCode> example = Example.of(qr, linkMatcher);
+        return repository.exists(example);
+    }
+
+    public int ReturnTableFromKey(String tableKey){
+        if (CheckIfTableKeyExists(tableKey)){
+            QRCode qrcode = repository.findBylink(tableKey).get(0);
+            return qrcode.id;
+        }
+        return 0;
     }
 
 }
