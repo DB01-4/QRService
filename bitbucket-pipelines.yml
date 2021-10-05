@@ -3,11 +3,12 @@ pipelines:
     master:
       - step:
           script:
-          - pipe: atlassian/azure-web-apps-deploy:1.0.1
-            variables:
-              AZURE_APP_ID: https://qr-service1.azurewebsites.net
-              AZURE_PASSWORD: Dependencyinversion1
-              AZURE_TENANT_ID: 0172c9f5-f568-42ac-9eb8-24ef84881faa
-              AZURE_RESOURCE_GROUP: 'Mediaan-Digital-Menu'
-              AZURE_APP_NAME: 'qr-service1'
-              ZIP_FILE: 'app.zip'
+            - pipe: atlassian/azure-web-apps-deploy:1.0.1
+               az login --service-principal --username i393839@fhict.nl --password 123 --tenant 0172c9f5-f568-42ac-9eb8-24ef84881faa
+              variables:
+                AZURE_APP_ID: https://qr-service1.azurewebsites.net
+                AZURE_PASSWORD: Dependencyinversion1
+                AZURE_TENANT_ID: 0172c9f5-f568-42ac-9eb8-24ef84881faa
+                AZURE_RESOURCE_GROUP: 'Mediaan-Digital-Menu'
+                AZURE_APP_NAME: 'qr-service1'
+                ZIP_FILE: 'app.zip'
