@@ -5,7 +5,7 @@ pipelines:
           script:
           - pipe: atlassian/azure-web-apps-deploy:1.0.1
             variables:
-              AZURE_APP_ID: $AZURE_APP_ID
+              AZURE_APP_ID: https://qr-service1.azurewebsites.net
               AZURE_PASSWORD: Dependencyinversion1
               AZURE_TENANT_ID: 0172c9f5-f568-42ac-9eb8-24ef84881faa
               AZURE_RESOURCE_GROUP: 'Mediaan-Digital-Menu'
