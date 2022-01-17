@@ -8,7 +8,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "qrcode")
-
 public class QRCode {
 
     @Id
